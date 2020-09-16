@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <properties resource="db.properties"/>
+    <typeAliases>
+        <package name="entity"/>
+    </typeAliases>
+
+    <!--插件标签-->
+    <plugins>
+        <!--分页助手-->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--<property name="dialect" value="mysql"/>-->
+        </plugin>
+    </plugins>
+
+    <!--&lt;!&ndash;数据库环境&ndash;&gt;-->
+    <!--<environments default="dev">-->
+        <!--<environment id="dev">-->
+            <!--<transactionManager type="JDBC"></transactionManager>-->
+            <!--<dataSource type="POOLED">-->
+                <!--<property name="driver" value="${jdbc.driver}"/>-->
+                <!--<property name="url" value="${jdbc.url}"/>-->
+                <!--<property name="username" value="${jdbc.name}"/>-->
+                <!--<property name="password" value="${jdbc.password}"/>-->
+            <!--</dataSource>-->
+        <!--</environment>-->
+    <!--</environments>-->
+
+    <!--<mappers>-->
+        <!--<package name="com/asan/mapper"/>-->
+    <!--</mappers>-->
+</configuration>
