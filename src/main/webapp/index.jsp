@@ -1,38 +1,47 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>index</title>
-    <script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
-    </script>
-    <script>
-        function myFunction(){
-            if (window.confirm("确认?")) {
-                jQuery.ajax({
-                    url: "/student/findAll",
-                    dataType: 'json',
-                    async: false,
-                    success: function(json) {
-                        alert(json.result);
-                        var tableObject =  $("#table");
-                        tableObject.empty();
-                        tableObject.append('<tr><td>id</td><td>value</td><td>name</td><td>password</td></tr>');
-                        for(var i=0;i<json.result.length;i++){
-                            var value = json.result[i];
-                            var c = "";
-                            tableObject.append('<tr><td>'+value.id+'</td><td>'+value.value+'</td><td>'+value.name+'</td><td>'+value.password+'</td></tr>');
-                        }
-                    }
-                });
-            }
-        }
-    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>学生列表</title>
 </head>
 <body>
-
-<h1>我的 Web 页面</h1>
-<table id="table" style="border-width: 1px;padding: 8px;border-style: solid;border-color: #999999;"></table>
-<button type="button" onclick="myFunction()">点击这里</button>
-
+<table border="solid 1px red;" cellspacing="0px" cellpadding="5px" width="600px" >
+    <thead>
+    <tr style="text-align: left;">
+        <form action="insert.jsp" method="post" enctype="application/x-www-form-urlencoded">
+            <td colspan="3">
+                <input type="submit" value="添加"/>
+            </td>
+        </form>
+        <form action="delete.jsp" method="post" enctype="application/x-www-form-urlencoded">
+            <td colspan="3">
+                <input  type="submit" value="删除"/>
+            </td>
+        </form>
+    </tr>
+    <tr style="text-align: center;">
+        <td><input type="checkbox" id="checkAll"/></td>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>密码</th>
+        <th>名言</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${ list }" var="p">
+        <tr style="text-align: center;">
+            <td><input type="checkbox" class="checkSimple" value="${ p.id }"/></td>
+            <th>${ p.id }</th>
+            <th>${ p.name }</th>
+            <th>${ p.password}</th>
+            <th>${ p.value}</th>
+            <td><a href="/update.jsp">修改</a></td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
 </body>
 </html>

@@ -5,34 +5,38 @@
     <title>index</title>
     <script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
     </script>
-    <script>
-        function myFunction(){
-            if (window.confirm("确认?")) {
-                jQuery.ajax({
-                    url: "/student/findAll",
-                    dataType: 'json',
-                    async: false,
-                    success: function(json) {
-                        alert(json.result);
-                        var tableObject =  $("#table");
-                        tableObject.empty();
-                        tableObject.append('<tr><td>id</td><td>value</td></tr>');
-                        for(var i=0;i<json.result.length;i++){
-                            var value = json.result[i];
-                            var c = "";
-                            tableObject.append('<tr><td>'+value.id+'</td><td>'+value.value+'</td></tr>');
-                        }
-                    }
-                });
-            }
-        }
-    </script>
+<!--    <script>-->
+<!--        function myFunction(){-->
+<!--            if (window.confirm("确认?")) {-->
+<!--                jQuery.ajax({-->
+<!--                    url: "/student/findAll",-->
+<!--                    dataType: 'json',-->
+<!--                    async: false,-->
+<!--                    success: function(json) {-->
+<!--                        alert(json.result);-->
+<!--                        var tableObject =  $("#table");-->
+<!--                        tableObject.empty();-->
+<!--                        tableObject.append('<tr><td>id</td><td>value</td></tr>');-->
+<!--                        for(var i=0;i<json.result.length;i++){-->
+<!--                            var value = json.result[i];-->
+<!--                            var c = "";-->
+<!--                            tableObject.append('<tr><td>'+value.id+'</td><td>'+value.value+'</td></tr>');-->
+<!--                        }-->
+<!--                    }-->
+<!--                });-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
 </head>
 <body>
 
 <h1>我的 Web 页面</h1>
-<table id="table" style="border-width: 1px;padding: 8px;border-style: solid;border-color: #999999;"></table>
-<button type="button" onclick="myFunction()">点击这里</button>
+<p>这是首页</p>
+<form method="get" action="/all">
+
+
+</form>
+
 
 </body>
 </html>

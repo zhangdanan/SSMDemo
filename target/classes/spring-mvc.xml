@@ -16,8 +16,8 @@
 
     <!--配置内部资源视图解析器-->
     <bean id="viewResource" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/pages/"/>
-        <property name="suffix" value=".html"/>
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".jsp"/>
     </bean>
 
     <!--配置文件上传-->

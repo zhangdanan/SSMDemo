@@ -2,14 +2,11 @@ package controller;
 
 import entity.Student;
 import service.StudentService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController("/student")
 public class
@@ -25,10 +22,10 @@ StudetController {
 
     @RequestMapping("findAll")
     @ResponseBody
-    public Map<String,Object> findAll(){
-        Map<String,Object> m = new HashMap<String,Object>();
-        m.put("result",studentService.findAll());
-        return  m;
+    public String findAll(HttpServletRequest req){
+      List<Student> list=studentService.findAll();
+        req.setAttribute("list", list);
+        return "/index";
     }
     @GetMapping(value = "/getById")
     public Student selectById(Integer id){
